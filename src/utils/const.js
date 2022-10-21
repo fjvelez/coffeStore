@@ -4,7 +4,7 @@ import divisa from '../assets/coffe/divisa.png'
 import wadafack from '../assets/coffe/wadafack.png'
 import animal from '../assets/coffe/animal.png'
 
-export const API_HOST = 'https://crudcrud.com/api/7512fe5931904850b798790b284f9436'
+export const API_HOST = 'https://crudcrud.com/api/15161cea02eb430db745e47ca03cb18d'
 
 export const FAVORITE_STORAGE = "favorites"
 

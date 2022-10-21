@@ -6,7 +6,7 @@ import ListCoffeNavigation from './ListCoffeNavigation'
 
 const Tab = createBottomTabNavigator();
 
-export default function Navigation() {
+export const Navigation = () => {
   return (
     <Tab.Navigator>
 
@@ -28,3 +28,5 @@ function renderCoffe(){
     />
   )
 }
+
+export default Navigation;
