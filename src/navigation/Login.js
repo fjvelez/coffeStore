@@ -1,10 +1,13 @@
 import React, { useState, memo } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Pressable } from 'react-native';
 import Logo from '../components/Logo';
 import { TextInput, Button } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const Login = () => {
+
+    const [secureTextEntry, setSecureTextEntry] = useState(true);
+    const [mail, setMail] = useState('');
+    const [password, setPassword] = useState('');
 
     return (
         <ImageBackground
@@ -16,15 +19,24 @@ export const Login = () => {
                 <Text style={styles.title}>Iniciar Sesión</Text>
                 <TextInput style={styles.Email}
                     label="Email"
-                    right={<Icon icon="home" />}
+                    left={<TextInput.Icon icon="email" />}
+                    value={mail}
+                    onChangeText={text => setMail(text)}
                 />
 
                 <TextInput style={styles.Password}
                     label="Password"
-                    secureTextEntry
-                    right={<Icon name="eye" />}
+                    secureTextEntry={secureTextEntry}
+                    left={<TextInput.Icon icon="form-textbox-password" />}
+                    onChangeText={text => setPassword(text)}
+                    value={password}
+                    right={<TextInput.Icon icon="eye" onPress={() => {
+                        setSecureTextEntry(!secureTextEntry);
+                        return false;
+                      }}/>}
+                          
                 />
-                <Button style={styles.Ingresar} mode="elevated"  dark='true' onPress={() => console.log('Pressed')}>
+                <Button style={styles.Ingresar} mode="elevated" dark='true' onPress={() => console.log('Pressed')}>
                     Ingresar
                 </Button>
             </View>
