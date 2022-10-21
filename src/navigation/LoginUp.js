@@ -11,17 +11,18 @@ function loginScreen(navigation) {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [lastname, setLastname] = useState('');
+
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const handleSignIn = () => {
-        signInWithEmailAndPassword(auth, mail, password)
+    const handleCreateAccount = () => {
+        createUserWithEmailAndPassword(auth, mail, password)
             .then(() => {
-
-                navigation.navigate('Main');
-            })
-            .catch(error => {
-                console.log(error);
+                console.log('Account Create!')
+                const user = userCredential.user;
+                console.log(user);
             })
     }
 
@@ -32,7 +33,19 @@ function loginScreen(navigation) {
         >
             <Logo />
             <View style={styles.ContainerInput}>
-                <Text style={styles.title}>Iniciar Sesión</Text>
+                <Text style={styles.title}>Crear Cuenta</Text>
+                <TextInput style={styles.Name}
+                    label="Nombre"
+                    left={<TextInput.Icon icon="account" />}
+                    value={name}
+                    onChangeText={text => setName(text)}
+                />
+                <TextInput style={styles.LastName}
+                    label="Apellido"
+                    left={<TextInput.Icon icon="account" />}
+                    value={lastname}
+                    onChangeText={text => setLastname(text)}
+                />
                 <TextInput style={styles.Email}
                     label="Email"
                     left={<TextInput.Icon icon="email" />}
@@ -52,8 +65,9 @@ function loginScreen(navigation) {
                     }} />}
 
                 />
-                <Button onPress={handleSignIn} style={styles.Ingresar} mode="elevated" dark='true'>
-                    Ingresar
+
+                <Button onPress={handleCreateAccount} style={styles.Ingresar} mode="elevated" dark='true'>
+                    Crear Cuenta
                 </Button>
             </View>
         </ImageBackground>
@@ -61,7 +75,7 @@ function loginScreen(navigation) {
 }
 
 
-export const Login = ({ navigation }) => {
+export const LoginUp = ({ navigation }) => {
     return (
         loginScreen(navigation)
     )
@@ -73,8 +87,26 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
+    Name: {
+        bottom: '-5%',
+        borderWidth: 3,
+        width: '80%',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
+    },
+    LastName: {
+        bottom: '-8%',
+        borderWidth: 3,
+        width: '80%',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20
+    },
     Email: {
-        bottom: '-10%',
+        bottom: '-11%',
         borderWidth: 3,
         width: '80%',
         borderTopLeftRadius: 20,
@@ -83,7 +115,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20
     },
     Password: {
-        bottom: '-15%',
+        bottom: '-14%',
         borderWidth: 3,
         width: '80%',
         borderRadius: 20,
@@ -107,4 +139,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Login;
+export default LoginUp;

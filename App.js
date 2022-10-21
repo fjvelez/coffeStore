@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import Navigation from './src/navigation/Navigation';
-import { Login } from './src/navigation/Login';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import MainStack from './src/navigation/MainStack';
 
-export default function App() {
+function App() {
   return (
-    <NavigationContainer>
-        <Login />
-    </NavigationContainer>
+      <MainStack />
   );
 }
+
+export default App;
+
