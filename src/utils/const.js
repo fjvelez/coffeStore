@@ -4,7 +4,13 @@ import divisa from '../assets/coffe/divisa.png'
 import wadafack from '../assets/coffe/wadafack.png'
 import animal from '../assets/coffe/animal.png'
 
-export const API_HOST = 'https://crudcrud.com/api/15161cea02eb430db745e47ca03cb18d'
+import oro from '../assets/subscription/oro.png'
+import platino from '../assets/subscription/platino.png'
+import diamante from '../assets/subscription/diamante.png'
+import extrema from '../assets/subscription/extrema.png'
+import vip from '../assets/subscription/vip.png'
+
+export const API_HOST = 'https://crudcrud.com/api/837723d273584b88a1fcc18e1cc61c53'
 
 export const FAVORITE_STORAGE = "favorites"
 
@@ -35,6 +41,14 @@ export const COFFE_COLORS = {
     especial18: especial18,
     wadafack: wadafack,
     animal: animal
+  }
+
+  export const SUBSCRIPTION_IMAGE = {
+    oro: oro,
+    platino: platino,
+    diamante: diamante,
+    extrema: extrema,
+    vip: vip
   }
 
   export const COFFE_FLAGS = {

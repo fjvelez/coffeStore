@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Pressable, ScrollView } from 'react-native';
 import Logo from '../components/Logo';
 import { TextInput, Button } from 'react-native-paper';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
-import { firebaseConfig } from '../utils/FirebaseAuth';
+import { firebaseConfigDB } from '../utils/Firebasedb';
+import { addCollection } from '../utils/actions'
+import { capitalize } from 'lodash'
+import { getToken } from '../utils/Notifications'
 
 function loginScreen(navigation) {
 
@@ -14,16 +17,26 @@ function loginScreen(navigation) {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
 
-    const app = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfigDB);
     const auth = getAuth(app);
 
     const handleCreateAccount = () => {
         createUserWithEmailAndPassword(auth, mail, password)
             .then(() => {
                 console.log('Account Create!')
-                const user = userCredential.user;
-                console.log(user);
+                addDataUser()
             })
+    }
+
+    const addDataUser = async() => {
+        const object = {
+            name: capitalize(name),
+            lastname: capitalize(lastname),
+            email: capitalize(mail),
+            token: await getToken()
+        }
+
+        const result = await addCollection('users', object)
     }
 
     return (

@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Pressable, ScrollView } from 'react-native';
 import Logo from '../components/Logo';
 import { TextInput, Button } from 'react-native-paper';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
-import { firebaseConfig } from '../utils/FirebaseAuth';
+import { firebaseConfigDB } from '../utils/Firebasedb';
+import { getCollection, addCollection } from '../utils/actions';
+import { useNavigation } from '@react-navigation/native'
 
 function loginScreen(navigation) {
-
     const [secureTextEntry, setSecureTextEntry] = useState(true);
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
-    const app = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfigDB);
     const auth = getAuth(app);
+    const nav = useNavigation();
 
-    const handleSignIn = () => {
+    const handleSignIn = async() => {
         signInWithEmailAndPassword(auth, mail, password)
             .then(() => {
-
-                navigation.navigate('Main');
+                nav.navigate("Navigation", {email:mail})
             })
             .catch(error => {
                 console.log(error);

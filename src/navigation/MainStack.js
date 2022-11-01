@@ -5,6 +5,7 @@ import Login from './Login'
 import { Main } from './Main'
 import LoginUp from './LoginUp'
 import Navigation from './Navigation'
+import Perfil from '../screens/Perfil'
 
 const Stack = createNativeStackNavigator()
 
@@ -27,6 +28,10 @@ const MainStack = () => {
                 <Stack.Screen
                     name='Navigation'
                     component={Navigation}
+                />
+                <Stack.Screen
+                    name='Perfil'
+                    component={Perfil}
                 />
             </Stack.Navigator>
         </NavigationContainer>

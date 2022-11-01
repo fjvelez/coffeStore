@@ -15,7 +15,7 @@ export default function CoffeScreen(props) {
     useEffect(()=>{
         (async ()=> {
           try {
-            const response = await getCoffeByIdApi(params.id);
+            const response = await getCoffeByIdApi("coffes", params.id);
             setCoffe(response);
             setCoffeImg(getImage(response.imagen))
           } catch (error) {

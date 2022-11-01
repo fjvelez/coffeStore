@@ -19,10 +19,6 @@ export const Main = ({ navigation }) => {
                 <Button onPress={() => navigation.navigate('LoginUp')} style={styles.Ingresar} mode="elevated" dark='true'>
                    <Text style={styles.textBotones}>Crear Cuenta</Text> 
                 </Button>
-                <Text style={styles.text}>O tambien puedes ingresar para ver nuestros productos haciendo click en </Text>
-                <Button onPress={() => navigation.navigate('Navigation')} style={styles.productos} mode="text" dark='true'>
-                    <Text style={styles.textProuctos}>Ver Productos</Text>
-                </Button>
             </View>
 
         </ImageBackground>

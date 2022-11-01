@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     tittle: {
         fontWeight: "bold",
         fontSize: 20,
-        paddingBottom: 5
+        paddingBottom: 5,
+        color: "#f30f6b"
     },
     block: {
         flexDirection: "row",

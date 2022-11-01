@@ -1,25 +1,20 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import { map, capitalize } from 'lodash'
-import getFlag from '../../utils/GetFlag'
+import { capitalize } from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-export default function Type(props) {
-    const {coffe} = props;
-    const bandera = subStr(coffe.region);
+export default function Title(props) {
+    const {subscription} = props;
   
   return (
     <View style={styles.content}>
       <View style={styles.pill}>
-          <Icon name="star" style={coffe.reviews >= 1 ? styles.icon: styles.iconGray } />
-          <Icon name="star" style={coffe.reviews >= 2 ? styles.icon: styles.iconGray } />
-          <Icon name="star" style={coffe.reviews >= 3 ? styles.icon: styles.iconGray } />
-          <Icon name="star" style={coffe.reviews >= 4 ? styles.icon: styles.iconGray } />
-          <Icon name="star" style={coffe.reviews >= 5 ? styles.icon: styles.iconGray } />
+          <Icon name="star" style={subscription.reviews >= 1 ? styles.icon: styles.iconGray } />
+          <Icon name="star" style={subscription.reviews >= 2 ? styles.icon: styles.iconGray } />
+          <Icon name="star" style={subscription.reviews >= 3 ? styles.icon: styles.iconGray } />
+          <Icon name="star" style={subscription.reviews >= 4 ? styles.icon: styles.iconGray } />
+          <Icon name="star" style={subscription.reviews >= 5 ? styles.icon: styles.iconGray } />
         </View>
-      <View style={styles.block}>
-        <Text style={styles.text}>{capitalize(coffe.region)}</Text>
-      </View>
     </View>
   )
 }
@@ -35,9 +30,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 20,
         marginHorizontal:10,
+        marginTop: 20,
         flexDirection: "row",
         paddingVertical: 1,
-        backgroundColor: "#DFDFDF",
+        backgroundColor: "#ACB9FE",
     },
     icon: {
       flexDirection: "row",
@@ -53,10 +49,12 @@ const styles = StyleSheet.create({
     },
     block: {
         flexDirection: "row",
-        paddingVertical: 1
+        paddingVertical: 1,
+        marginTop: 10
     },
     text: {
-      color: "#f30f6b"
+      color: "#f30f6b",
+      fontWeight: "bold"
     },
     image: {
       position: "absolute",
@@ -66,11 +64,3 @@ const styles = StyleSheet.create({
       height: 30
     }
 })
-
-function subStr(region){
-  var guion = region.indexOf('-')
-  if(guion == '-1'){
-    guion = region.indexOf(',')
-  }
-  return (region.substring(0, guion).trim())
-}

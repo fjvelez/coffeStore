@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import { getCoffeApi } from '../api/CoffeApi'
 import CoffeListComponent from '../components/CoffeList'
+import { getCollection } from '../utils/actions';
 
 export default function ListCoffe() {
   const [coffes, setCoffes] = useState([]);
@@ -14,7 +15,7 @@ export default function ListCoffe() {
 
   const loadCoffe = async () => {
     try {
-      const response = await getCoffeApi();
+      const response = await getCoffeApi("coffes");
 
       const coffeArray = [];
       

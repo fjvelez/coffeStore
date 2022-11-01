@@ -1,36 +1,36 @@
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native'
-import getImage from '../utils/GetImage'
+import getImage from '../utils/GetSubs'
 import React from 'react'
 import {capitalize} from 'lodash'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default function CoffeCard(props) {
-    const {coffe} = props;
+    const {subscription} = props;
     const navigation = useNavigation();
 
-    const coffeImage = getImage(coffe.imagen);
+    const subsImg = getImage(subscription.imagen);
     
-    const goToCoffe = () => {
-        navigation.navigate("CoffeScreen", { id: coffe.id });
+    const goToSubscription = () => {
+        navigation.navigate("SubscriptionScreen", { id: subscription.id });
     }
 
   return (
-    <TouchableWithoutFeedback onPress={goToCoffe}>
+    <TouchableWithoutFeedback onPress={goToSubscription}>
         <View style={styles.card}>
             <View style={styles.spacing}>
                 <View style={styles.bgStyles}>
-                    <Text style={styles.name}>{capitalize(coffe.nombre)}</Text>
-                    <Text style={styles.number}>{`Puntaje ${coffe.puntaje}`}</Text>
+                    <Text style={styles.name}>{capitalize(subscription.nombre)}</Text>
+                    <Text style={styles.number}>{`Puntaje ${subscription.puntaje}`}</Text>
                     <View style={styles.block}>
-                        <Icon name="star" style={coffe.reviews >= 1 ? styles.icon: styles.iconGray } />
-                        <Icon name="star" style={coffe.reviews >= 2 ? styles.icon: styles.iconGray } />
-                        <Icon name="star" style={coffe.reviews >= 3 ? styles.icon: styles.iconGray } />
-                        <Icon name="star" style={coffe.reviews >= 4 ? styles.icon: styles.iconGray } />
-                        <Icon name="star" style={coffe.reviews >= 5 ? styles.icon: styles.iconGray } />
+                        <Icon name="star" style={subscription.reviews >= 1 ? styles.icon: styles.iconGray } />
+                        <Icon name="star" style={subscription.reviews >= 2 ? styles.icon: styles.iconGray } />
+                        <Icon name="star" style={subscription.reviews >= 3 ? styles.icon: styles.iconGray } />
+                        <Icon name="star" style={subscription.reviews >= 4 ? styles.icon: styles.iconGray } />
+                        <Icon name="star" style={subscription.reviews >= 5 ? styles.icon: styles.iconGray } />
                     </View>
-                    <Text>{`$${coffe.precio}`}</Text>
-                    <Image source={coffeImage} style={styles.image} />
+                    <Text>{`$${subscription.precio}`}</Text>
+                    <Image source={subsImg} style={styles.image} />
                 </View>
             </View>
         </View>
@@ -56,10 +56,11 @@ const styles = StyleSheet.create({
     },
     image: {
         position: "absolute",
-        bottom: 2,
-        right: 2,
+        bottom: 15,
+        right: 8,
         width: 80,
-        height: 80
+        height: 80,
+        borderRadius: 10
     },
     name: {
         color: "#f40f6c",

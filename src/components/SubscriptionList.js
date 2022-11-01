@@ -1,18 +1,18 @@
 import { StyleSheet, FlatList, Platform } from 'react-native'
 import React, {useEffect} from 'react'
-import CoffeCard from './CoffeCard';
+import SubscriptionCard from './SubscriptionCard';
 
 
-export default function CoffeListComponent(props) {
-    const {coffes} = props;
+export default function SubscriptionListComponent(props) {
+    const {subscription} = props;
 
   return (
     <FlatList 
-        data = {coffes}
+        data = {subscription}
         numColumns={2}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(coffes)=> String(coffes._id)}
-        renderItem={({item})=> <CoffeCard coffe={item}/>}
+        keyExtractor={(subs)=> String(subs._id)}
+        renderItem={({item})=> <SubscriptionCard subscription={item}/>}
         contentContainerStyle={styles.flatListContentContainer}
     />
   )
