@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, LogBox } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Header from '../components/coffe/header'
 import Region from '../components/coffe/region'
@@ -6,6 +6,8 @@ import Info from '../components/coffe/info'
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import {getCoffeByIdApi} from '../api/CoffeApi'
 import getImage from '../utils/GetImage'
+
+LogBox.ignoreLogs(['Warning: Encountered two children with the same key, `undefined:undefined`']);
 
 export default function CoffeScreen(props) {
     const {navigation, route: {params}} = props;

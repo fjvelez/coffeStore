@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, StyleSheet, Button, ScrollView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { getDataUser } from '../utils/actions';
-import { signOut, getAuth } from 'firebase/auth'
+import { signOut, getAuth, updatePassword } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
 import { firebaseConfigDB } from '../utils/Firebasedb';
 import { useNavigation } from '@react-navigation/native'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Pressable, ScrollView, LogBox } from 'react-native';
 import Logo from '../components/Logo';
 import { TextInput, Button } from 'react-native-paper';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
@@ -7,6 +7,8 @@ import { initializeApp } from 'firebase/app'
 import { firebaseConfigDB } from '../utils/Firebasedb';
 import { getCollection, addCollection } from '../utils/actions';
 import { useNavigation } from '@react-navigation/native'
+
+LogBox.ignoreLogs(['AsyncStorage has been extracted from react-native core and will be removed in a future release']);
 
 function loginScreen(navigation) {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -39,6 +41,7 @@ function loginScreen(navigation) {
                     left={<TextInput.Icon icon="email" />}
                     value={mail}
                     onChangeText={text => setMail(text)}
+                    autoCapitalize='none'
                 />
 
                 <TextInput style={styles.Password}
@@ -51,7 +54,7 @@ function loginScreen(navigation) {
                         setSecureTextEntry(!secureTextEntry);
                         return false;
                     }} />}
-
+                    autoCapitalize='none'
                 />
                 <Button onPress={handleSignIn} style={styles.Ingresar} mode="elevated" dark='true'>
                     Ingresar

@@ -8,6 +8,7 @@ import { firebaseConfigDB } from '../utils/Firebasedb';
 import { addCollection } from '../utils/actions'
 import { capitalize } from 'lodash'
 import { getToken } from '../utils/Notifications'
+import { useNavigation } from '@react-navigation/native'
 
 function loginScreen(navigation) {
 
@@ -19,24 +20,27 @@ function loginScreen(navigation) {
 
     const app = initializeApp(firebaseConfigDB);
     const auth = getAuth(app);
+    const nav = useNavigation();
 
     const handleCreateAccount = () => {
         createUserWithEmailAndPassword(auth, mail, password)
             .then(() => {
                 console.log('Account Create!')
                 addDataUser()
+                nav.navigate("Login")
             })
     }
 
     const addDataUser = async() => {
         const object = {
-            name: capitalize(name),
-            lastname: capitalize(lastname),
-            email: capitalize(mail),
+            name: name,
+            lastname: lastname,
+            email: mail,
             token: await getToken()
         }
 
         const result = await addCollection('users', object)
+        console.log("desde crear cuenta", result)
     }
 
     return (
@@ -64,6 +68,7 @@ function loginScreen(navigation) {
                     left={<TextInput.Icon icon="email" />}
                     value={mail}
                     onChangeText={text => setMail(text)}
+                    autoCapitalize='none'
                 />
 
                 <TextInput style={styles.Password}
@@ -76,6 +81,7 @@ function loginScreen(navigation) {
                         setSecureTextEntry(!secureTextEntry);
                         return false;
                     }} />}
+                    autoCapitalize='none'
 
                 />
 

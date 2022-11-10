@@ -47,6 +47,22 @@ export const getDataUser = async(coleccion, email) => {
       }
 }
 
+// CONSULTAR UN DATO ESPECIFICO DE UNA COLECCION
+export const getStore = async(coleccion, region) => {
+  const result = {statusResponse:false, data: null, error: null}
+  try {
+      const colleRef = collection(db, coleccion);
+      const consult = query(colleRef, where("region", "==", region))
+      const data = await getDocs(consult)
+      const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
+      result.statusResponse = true
+      result.data = arrayData
+      return result.data
+    } catch (e) {
+      result.error = e
+    }
+}
+
 
 // ACTUALIZAR COLECCIONES
 export const updateUser = async(coleccion, objeto, value) => {

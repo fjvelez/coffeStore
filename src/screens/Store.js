@@ -6,10 +6,12 @@ import { Marker } from 'react-native-maps';
 
 export default function Store() {
   const [location, setLocation] = useState(null)
+  const [region, setRegion] = useState(null)
   useEffect(()=>{
     (async()=>{
       const response = await getLocation()
-      setLocation(response)
+      console.log("imprime region desde store",region)
+      setLocation(response.location)
     })()
   },[])
   
@@ -19,6 +21,7 @@ export default function Store() {
         initialRegion={location}
         showsUserLocation
       >
+
         <Marker 
           coordinate= {
             {

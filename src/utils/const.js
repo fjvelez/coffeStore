@@ -10,7 +10,7 @@ import diamante from '../assets/subscription/diamante.png'
 import extrema from '../assets/subscription/extrema.png'
 import vip from '../assets/subscription/vip.png'
 
-export const API_HOST = 'https://crudcrud.com/api/837723d273584b88a1fcc18e1cc61c53'
+export const API_HOST = 'https://crudcrud.com/api/0dd3569579bf4df3955287288f0d8856'
 
 export const FAVORITE_STORAGE = "favorites"
 
